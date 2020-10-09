@@ -1,49 +1,23 @@
 #nutritional value
-def roti():
-    print("40 gm Roti with some oil")
-    print("Protein :: 2 gm")
-    print("Carbohydrate :: 11.8 gm")
-    print("Fibre :: 2 gm")
-    print("Fat :: 3.1 gm")
-    print("Calories :: 80")
-def white_bread():
-    print("1 Slice of bread")
-    print("Protein :: 2 gm")
-    print("Carbohydrate :: 13 gm")
-    print("Fibre :: 0.6 gm")
-    print("Fat :: 1 gm")
-    print("Calories :: 67")
-def brown_bread():
-    print("1 Slice of bread")
-    print("Protein :: 3 gm")
-    print("Carbohydrate :: 17 gm")
-    print("Fibre :: 2 gm")
-    print("Fat :: 2 gm")
-    print("Calories :: 92")
-def egg():
-    print("1 Egg")
-    print("Protein :: 7 gm")
-    print("Carbohydrate :: 1.1 gm")
-    print("Fibre :: 0 gm")
-    print("Fat :: 5 gm + 1.6 gm (saturated)")
-    print("Calories :: 75")
-def chila():
-    print("1 Besan Chila")
-    print("Protein :: 10.7 gm")
-    print("Carbohydrate :: 30.7 gm")
-    print("Fibre :: 7.9 gm")
-    print("Fat :: 7.9 gm")
-    print("Calories :: 236")
+'''
+Key - Values are [roti ,bread ,egg_boiled ,egg_omlete,yellow dal,rice ,chai]
 
-roti()
-print("\n")
-white_bread()
-print("\n")
-brown_bread()
-print("\n")
-egg()
-print("\n")
-chila()
+Values are in order of 
+1. Name of item 
+2.Protein
+3.Carbohydrates
+4.Fibre
+5.Fat
+6.Calories
+'''
 
+values = { roti : ["roti",2,11.8,2,3.1,80],  #(40 gm)
+           bread : ["bread",2,13,060,1,67], #(1 slice of bread)
+           egg_boiled : ["egg_boiled",6.3,0.6,0,5.3,77],  #(1 Boiled egg)
+           egg_omlete : ["egg_omlete",6,0,0,7,94], #(1 piece egg omlete)
+           yellow dal : ["yellow dal",4,18,0.6,4,121], #(8 Servings)
+           rice : ["rice",2.6,23,1.8,0.9,111], #(100 gm)
+           chai : ["chai",2.5,12.2,0,3.7,105] #(1 cup Masala tea)
+         }
 
 
