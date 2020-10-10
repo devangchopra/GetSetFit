@@ -20,40 +20,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponse 
 from .forms import search_img 
 
+from model_final import ModelPredictor
+
 def home(request):
     return render(request, 'fitme/home.html')
-
-def signupuser(request):
-    if request.method == 'GET':
-        return render(request, 'fitme/signupuser.html', {'form':UserCreationForm()})
-    else:
-        if request.POST['password1'] == request.POST['password2']:
-            try:
-                user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
-                user.save()
-                login(request, user)
-                return redirect('currentfitmes')
-            except IntegrityError:
-                return render(request, 'fitme/signupuser.html', {'form':UserCreationForm(), 'error':'That username has already been taken. Please choose a new username'})
-        else:
-            return render(request, 'fitme/signupuser.html', {'form':UserCreationForm(), 'error':'Passwords did not match'})
-
-def loginuser(request):
-    if request.method == 'GET':
-        return render(request, 'fitme/loginuser.html', {'form':AuthenticationForm()})
-    else:
-        user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
-        if user is None:
-            return render(request, 'fitme/loginuser.html', {'form':AuthenticationForm(), 'error':'Username and password did not match'})
-        else:
-            login(request, user)
-            return redirect('currentfitmes')
-
-@login_required
-def logoutuser(request):
-    if request.method == 'POST':
-        logout(request)
-        return redirect('home')
 
 
 
@@ -61,47 +31,85 @@ class createfitme(LoginRequiredMixin, CreateView):
     model = Food_Consumed
     fields = ['items','Amount']
     template_name = "fitme/createfitme.html"
-    
+    URL = 'currentfitmes'
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.user = self.request.user
         return super().form_valid(form)
+
+    # def get_success_url(self):
+    #     return redirect('currentfitmes')
+
 
 class search(LoginRequiredMixin, CreateView):
     model = Image_for_ML
     fields = ['image']
+    print("This is inside the search class")
     template_name = "fitme/createfitme.html"
 
     def form_valid(self, form):
+        print("This is inside the search function") 
         form.instance.user = self.request.user
         return super().form_valid(form)
      
 
 # Create your views here. 
+# def image_view(request):
+#     if request.method == 'POST':
+#         form = search_img(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             predict = ModelPredictor.ml_search(image_path="/django_fit/media/ml_pics/images.jpg") 
+#             print("Predict : ",predict)
+#             return redirect('success')
+#         else:
+#             form = search_img()
+#         return render(request, 'fitme/search.html', {'form' : form})
+    
+#     else:
+#         return render(request, 'fitme/search.html')
+
 def image_view(request): 
+    if request.method == 'POST': 
+        form = search_img(request.POST, request.FILES) 
+        if form.is_valid(): 
+            print('+++++++++++++',form.instance.image)
+            form.save()
+            import os
+            BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            print(BASE_DIR)
+            predict = ModelPredictor.ml_search(image_path=BASE_DIR+"/media/"+str(form.instance.image)) 
+            print("+-+-+--+-+-+-+-+-+-+-  Predict : ",predict)
+            data = Item()
+            print(data.__dict__)
+            return render(request, 'fitme/result.html', {'predict':predict})
+    else: 
+        form = search_img() 
+    return render(request, 'fitme/search.html', {'form' : form}) 
 
-	if request.method == 'POST': 
-		form = search_img(request.POST, request.FILES) 
-
-		if form.is_valid(): 
-			form.save() 
-			return redirect('success') 
-	else: 
-		form = search_img() 
-	return render(request, 'fitme/search.html', {'form' : form}) 
-
-
-def success(request): 
-	return HttpResponse('successfully uploaded') 
 
 
 
 
 
+ 
 @login_required
 def currentfitmes(request):
-    fitmes = Food_Consumed.objects.filter(user=request.user, time__isnull=True)
+    fitmes = Food_Consumed.objects.filter(user=request.user)
     return render(request, 'fitme/currentfitmes.html', {'fitmes':fitmes})
+
+class consumed(ListView):
+    model = Food_Consumed
+    template_name = 'fitme/consumed.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'foods'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return Food_Consumed.objects.filter(user=self.request.user)
+
+
+
+
 
 @login_required
 def completedfitmes(request):

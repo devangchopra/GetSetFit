@@ -54,3 +54,5 @@ print("Enter Gender")
 gender=input()
 bmi(name,weight,height)
 '''
+
+print(bmi(100,1.8))

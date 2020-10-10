@@ -17,32 +17,59 @@ from django.contrib import admin
 from django.urls import path, include
 from fitme import views
 
+from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
+from users import views as user_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    # Auth
-    path('signup/', views.signupuser, name='signupuser'),
-    path('login/', views.loginuser, name='loginuser'),
-    path('logout/', views.logoutuser, name='logoutuser'),
+    path('register/', user_views.register, name='register'),
+    path('profile/', user_views.profile, name='profile'),
+    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+    path('password-reset/',
+         auth_views.PasswordResetView.as_view(
+             template_name='users/password_reset.html'
+         ),
+         name='password_reset'),
+    path('password-reset/done/',
+         auth_views.PasswordResetDoneView.as_view(
+             template_name='users/password_reset_done.html'
+         ),
+         name='password_reset_done'),
+    path('password-reset-confirm/<uidb64>/<token>/',
+         auth_views.PasswordResetConfirmView.as_view(
+             template_name='users/password_reset_confirm.html'
+         ),
+         name='password_reset_confirm'),
+    path('password-reset-complete/',
+         auth_views.PasswordResetCompleteView.as_view(
+             template_name='users/password_reset_complete.html'
+         ),
+         name='password_reset_complete'),
+
+
+
+
+
+
 
     # Fitmes
     path('', views.home, name='home'),
-    path('create/', views.createfitme.as_view(), name='createfitme'),
+    path('create/', views.createfitme.as_view(success_url="/food/consumed/"), name='createfitme'),
     
     path('search/', views.image_view, name='search-in-ml'),
 
-    path('success', views.success, name = 'success'), 
-
-    path('current/', views.currentfitmes, name='currentfitmes'),
-    path('completed/', views.completedfitmes, name='completedfitmes'),
-    path('<int:fitme_pk>', views.viewfitme, name='viewfitme'),
+    path('food/consumed/', views.consumed.as_view(), name='currentfitmes'),
+    path('create/<int:fitme_pk>', views.viewfitme, name='viewfitme'),
     path('<int:fitme_pk>/complete', views.completefitme, name='completefitme'),
     path('<int:fitme_pk>/delete', views.deletefitme, name='deletefitme'),
 
 ]
 
-from django.conf import settings
-from django.conf.urls.static import static
+
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,
             document_root=settings.MEDIA_ROOT)

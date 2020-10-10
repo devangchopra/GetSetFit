@@ -5,3 +5,4 @@ admin.site.register(Item)
 admin.site.register(Food_Consumed)
 admin.site.register(Image_for_ML)
 
+
