@@ -6,6 +6,12 @@ Just on single click user can upload the the image of his diet and our applicati
 
 Link for model checkpoints: https://drive.google.com/drive/folders/1hROz-dhJrXPrl8bAnqthIledLCRrXgUp?usp=sharing
 
+## Videos--->
+--------------------
+#### https://youtu.be/yNnPFnw28_Q
+#### https://www.youtube.com/watch?v=fQrsiB7uVag
+---------------------------------
+
 ## Discription and Methodology:
 We had trained the multi-class Classifier using Convolution Neural Networks over 7 broad categories: Roti, Bread, Yellow-daal, Rice, Boiled-Egg, omlet, chai.
 further on getting more time we could scale it at as many items as we want and could give sufficient time to train our model.  
@@ -107,9 +113,4 @@ The software or website will be given as a service to various dieticians to trac
 
 
 
-Videos--->
---------------------
-https://youtu.be/yNnPFnw28_Q
-https://www.youtube.com/watch?v=fQrsiB7uVag
----------------------------------
 
