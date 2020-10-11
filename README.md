@@ -26,7 +26,10 @@ The parameters for training models are:
 1. Learning Rate: 0.0001
 2. Optimizer: Adam
 3. Loss function: sparse_categorical_crossentropy
-4. Activation function: Relu
+4. Activation function: Relu, Softmax
+5. Layers used are: Dense, Dropout, GlobalAveragePooling2D, Flatten, Conv2D, MaxPooling2D
+
+Advantage and Problem solved:
 
 
 
