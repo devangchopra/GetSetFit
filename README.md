@@ -39,3 +39,54 @@ Advantage and Problem solved:
 | col 3 is      | right-aligned | $1600 |
 | col 2 is      | centered      |   $12 |
 | zebra stripes | are neat      |    $1 |
+
+
+
+
+Future Scope of the Project:
+
+
+In future we can train the machine learning model with more number of images so that the prediction accuracy of the model improves. Currently we can classify the foods in 7 categories but later on we can use more data and computational power to train a better model which can classify foods into various other categories. User can have his own dieting history in the profile panel which can help him judge his own past performace. With the help of proper of dietician we can have three major diet plans of reducing weight , gaining weight and mainting the current phsique in the future.
+
+
+
+Buisness Aspects:
+
+
+
+This website/software can generate revenue through these models.
+
+Model 01:
+(Subscription Model)
+
+We can make user pay for the service. Standalone user can register in our application to track their dieting activities. They will be provided with zero advertisement experience and they can choose from the available dieting plans we have or else can simply use our application for tracking and judging their calorie intake. People with obese condition, or people who are looking to gain weight and the gym freaks or physically fit people will be the target group for this category.
+
+
+
+Model 02:
+(Advertisement Model)
+
+
+The user will be given the same priviliges as in model 01 but the advertisement will be shown to this category user. User in this category will also be a standalone user and he will be shown with the advertisement of health cauntious brands, gym brands, dieticians in the location near him and also the restaurants who offer diet food. 
+
+
+Model 03: (-----> Main  <-----)
+(Software as a service Model)
+
+
+The software or website will be given as a service to various dieticians to track their patients growth and improvement. Dietician can look at the consumed diet of their patients regularly without physically meeting them. Dieticians can provide their diet plans or suggestion to particular patients through our portal. We will use django-tenant-model to register every dietician  as a tenant and every tenant will have his/her private patients. This dieticians will be asked to pay for our service.
+
+
+
+Problems Solved:
+
+1) Dietician Errors are removed :-->  During weekly or mothly meet patient might not be able to remember his exact meal. Our website will be useful in removing the human errors or confusion regarding this diet. No manual records and growth can be tracked.
+
+
+2) Dietician can choose a chanel for each user :---> DIetician can recommend or give the customised diet plans to every patient on judging him on the basis of his calorie intake in past, or according to his calorie intake in differnet seasons.
+
+
+3)User can Contact Dietician :--> If needful user can contact the dietician remtely for asking suggestions or for consultancy.
+
+
+
