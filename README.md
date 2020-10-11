@@ -1,4 +1,5 @@
 # GetSetFit  
+Go click pic and eat
 
 GetSetFit application is aimed to assist the people with regard to their fitness, daily diet, monitoring the intake of calories, proteins, carbohydrates, fat and fibre.  
 Just on single click user can upload the the image of his diet and our application will use machine learning model to to find the item and will prepare the report of all calories, proteins,carbohydrates, fat and fibre intake and will also tell the required amount by person in accordance with his or her BMI.
@@ -6,7 +7,7 @@ Just on single click user can upload the the image of his diet and our applicati
 ## Discription and Methodology:
 We had trained the multi-class Classifier using Convolution Neural Networks over 7 broad categories: Roti, Bread, Yellow-daal, Rice, Boiled-Egg, omlet, chai.
 further on getting more time we could scale it at as many items as we want and could give sufficient time to train our model.  
-What it does is :- In this application user is just required to scan their food and upload it . After that the trained machine learning model will predict the food item and will provide you the calories,protein ,carbohydrates,fats,fibre of that food item and will maintain your chart for whole day.  
+What it does is :- In this application user is just required to scan their food and upload it . After that the trained machine learning model will predict the food item and will provide you the calories,protein ,carbohydrates,fats,fibre of that food item and will maintain your chart for whole day.   
 Our app at starting calculates BMI of person and sets the initial status for the person just by using simple universal logics. like:  
 
 ```python
@@ -83,10 +84,26 @@ Problems Solved:
 1) Dietician Errors are removed :-->  During weekly or mothly meet patient might not be able to remember his exact meal. Our website will be useful in removing the human errors or confusion regarding this diet. No manual records and growth can be tracked.
 
 
-2) Dietician can choose a chanel for each user :---> DIetician can recommend or give the customised diet plans to every patient on judging him on the basis of his calorie intake in past, or according to his calorie intake in differnet seasons.
+2) Dietician can customise for each user :---> Dietician can recommend or give the customised diet plans to every patient on judging him on the basis of his calorie intake in past, or according to his calorie intake in differnet seasons.
 
 
-3)User can Contact Dietician :--> If needful user can contact the dietician remtely for asking suggestions or for consultancy.
+3) User can Contact Dietician :--> If needful user can contact the dietician remtely for asking suggestions or for consultancy.
+
+4) Spreading health awareness :--> Through the free version of this application we will be spreading health awareness of the various sections of the society.
 
 
+5) Reduced medical fees for diet plans :-- As a single dietician can handle various patients simultaneously, the cost of consulting a dietician also reduces gradually.
+
+
+Challanges we ran into:
+
+
+1) Poor classification due to less time for training model
+
+
+
+2) Deployment issues due to lack of knowledge
+
+
+3) Designing database schema before implementation.
 
